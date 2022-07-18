@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request
 from flask_restful import Api
 from flask_jwt import JWT
@@ -8,7 +10,8 @@ from resources.item import Items, Itemlist
 from resources.store import Store, StoreList
 # while importing any python program it runs it or check it in case of oop thus to control that we use __name__ == '__main__'
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'DATABASE_URL', 'sqlite:///data.db')
 # sqlite can be changed with any db like mysql etc
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # extention of flask Sqlalchemy tracker is turned off
