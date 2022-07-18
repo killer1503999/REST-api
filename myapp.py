@@ -16,12 +16,6 @@ api = Api(app)
 app.secret_key = "Nilesh"
 
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-    # db.create table automatically creates table which it sees from imports
-
-
 jwt = JWT(app, authenticate, identity)
 # jwt makes a new point as /auth which takes username and password which then uses authenticate function which returns user and jwt token
 # this jwt token is used by identity thus request is authenticated
