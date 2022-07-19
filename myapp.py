@@ -21,6 +21,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
 # sqlite can be changed with any db like mysql etc
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # extention of flask Sqlalchemy tracker is turned off
+
+app.config['PROPAGATE_EXCEPTIONS'] = True
+# helpful for error propagation
 api = Api(app)
 app.secret_key = "Nilesh"
 
